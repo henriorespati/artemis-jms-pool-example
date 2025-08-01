@@ -27,7 +27,8 @@ public class ArtemisJmsPoolProducer {
                     TextMessage message = session.createTextMessage("Message #" + messageId);
                     System.out.println("Sending message: " + message.getText());
                     producer.send(message);
-                } catch (Exception e) {
+                    executor.shutdown();
+                } catch (JMSException e) {
                     e.printStackTrace();
                 }
             });

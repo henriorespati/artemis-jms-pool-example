@@ -3,6 +3,8 @@ package com.example;
 import javax.jms.*;
 
 public class ArtemisJmsPoolConsumer {
+    private static int timeout = 10000; // Default timeout for message receive in ms
+    
     public static void main(String[] args) throws Exception {
         if (args == null || args.length == 0) {
             // No arguments provided
@@ -21,10 +23,10 @@ public class ArtemisJmsPoolConsumer {
 
                 while (true) {
                     Thread.sleep(1000); // Simulate some processing delay
-                    Message message = consumer.receive(1000);
+                    Message message = consumer.receive(timeout);
                     if (message == null) {
                         // No more messages after timeout
-                        continue;
+                        break;
                     }
                     if (message instanceof TextMessage) {
                         System.out.println("Received: " + ((TextMessage) message).getText());

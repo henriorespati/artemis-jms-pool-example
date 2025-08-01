@@ -14,6 +14,7 @@ public class ConnectionFactoryProvider {
                 "(" + brokerUrl +
                 ")?useTopologyForLoadBalancing=true&sslEnabled=true&verifyHost=false&trustStoreType=PKCS12&trustStorePath=truststore.p12&trustStorePassword=changeit");
                         
+            // Uncomment the following to use a specific load balancing policy    
             // baseFactory.setConnectionLoadBalancingPolicyClassName(
             //     "org.apache.activemq.artemis.api.core.client.loadbalance.RandomConnectionLoadBalancingPolicy");
             
